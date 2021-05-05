@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+    <link rel="stylesheet" href="index.css">
+    <script defer type="module" src="./modules/UserCredentialFormHandler.js"></script>
+    <script defer type="module" src="./modules/TwitterAtFormHandler.js"></script>
+    <script defer type="module" src="./renderer.js"></script>
+  </head>
+  <body>
+    <form id="user-credential-form">
+      <label>Consumer Key: 
+        <input id="ucf-consumer-key-input" name="consumer-key" required>
+      </label>
+      <label>Consumer Secret Key:
+        <input id="ucf-consumer-secret-key-input" name="consumer-secret-key" required>
+      </label>
+      <label>Access Token:
+        <input id="ucf-access-token-input" name="access-token" required>
+      </label>
+      <label>Access Token Secret:
+        <input id="ucf-access-token-secret-input" name="access-token-secret" required>
+      </label>
+      <br>
+      <button>Submit</button>
+    </form>
+    <br>
+    <br>
+    <form id="twitter-user-form">
+      <label>@
+        <input name="user-at" maxlength="15" required>
+      </label>
+      <label>Get tweet count: 
+        <input name="tweet-count" type="number" min="5" required value="5">
+      </label>
+      <br>
+      <button>Get Timeline</button>
+    </form>
+  </body>
+</html>
