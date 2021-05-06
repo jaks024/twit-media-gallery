@@ -1,20 +1,8 @@
-import {
-    DeserializeUserData,
-    SerializeUserData
-} from './modules/UserFileSerializer.js';
-import { UserData } from './modules/UserData.js';
+import { Initialize } from './modules/UserDataHandler.js';
 
-
-var userData = DeserializeUserData();
-
-function Initialize(){
-    if (userData == null) {
-        userData = new UserData(false);
-        SerializeUserData(userData);
-    } 
-}
 
 Initialize();
+
 
 /*
 var deserializedUserCreds = DeserializeUserCredential();
