@@ -1,0 +1,1 @@
+const userBlockParentElement = document.getElementById('gallery-section');

@@ -1,12 +1,160 @@
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  margin: auto;
-  max-width: 38rem;
-  padding: 2rem;
+:root{
+  --main-bg-color: black;
+  --text-color: white;
+  --img-grid-square-size: 150px;
+  --hyperlink-color: dodgerblue;
 }
 
+html, body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--main-bg-color);
+  height: 100%;
+  color: var(--text-color);
+}
+
+.page-header{
+  font-size: 50px;
+  font-weight: bolder;
+  height: 60px;
+  line-height: 50px;
+}
+
+.section-header{
+  font-size: 30px;
+  font-weight: bold;
+  height: 40px;
+  line-height: 30px ;
+}
+
+.small-section-header{
+  font-size: 22px;
+  font-weight: bold;
+  line-height: 22px;
+  height: 22px;
+}
+
+.setting-wrapper{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 50px 10%;
+  z-index: 1;
+  background-color: var(--main-bg-color);
+}
+
+.user-credential-section{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 300px;
+}
 
 form{
   display: flex;
   flex-direction: column;
+}
+
+label{
+  width: 100%;
+  display: flex;
+  margin: 5px 0px;
+}
+
+label >input {
+  flex:auto;
+  margin-left: 20px;
+  background-color: transparent;
+  border: 1px solid var(--text-color);
+  color: inherit;
+}
+
+button{
+  font: inherit;
+  background-color: transparent;
+  border: 1px solid var(--text-color);
+  color: inherit;
+  height: 30px;
+}
+
+.wrapper{
+  position: relative;
+  width: 100%;
+  height: fit-content;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.control-section{
+  display: flex;
+  flex-direction: row;
+  height: fit-content;
+}
+
+.twitter-user-form-section{
+  width: 50%;
+  height: fit-content;
+}
+
+.user-block{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 300px;
+}
+
+.user-info-block{
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1px;
+}
+
+.user-profile-img{
+  width: 50px;
+  height: 50px;
+}
+
+.user-info-details{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 10px;
+}
+
+.user-info-username{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.user-info-at{
+  font-size: 20px;
+  color: var(--hyperlink-color);
+}
+
+.user-img-grid{
+  display: grid;
+  grid-template-columns: var(--img-grid-square-size) var(--img-grid-square-size) var(--img-grid-square-size);
+  column-gap: 1px;
+  row-gap: 1px;
+  width: 100%;
+  height: 100%;
+  flex: 1;
+}
+
+
+.user-img-crop{
+  height: var(--img-grid-square-size);
+  width: var(--img-grid-square-size);
+  overflow: hidden;
+}
+
+img{
+  width: 100%;
+  height: 100%;
+  object-fit:cover;
 }

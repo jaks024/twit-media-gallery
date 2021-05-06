@@ -3,39 +3,81 @@
   <head>
     <meta charset="UTF-8">
     <title>Hello World!</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="./index.css">
     <script defer type="module" src="./renderer.js"></script>
     <script defer type="module" src="./modules/UserCredentialFormHandler.js"></script>
     <script defer type="module" src="./modules/TwitterAtFormHandler.js"></script>
   </head>
   <body>
-    <form id="user-credential-form">
-      <label>Consumer Key: 
-        <input id="ucf-consumer-key-input" name="consumer-key" required>
-      </label>
-      <label>Consumer Secret Key:
-        <input id="ucf-consumer-secret-key-input" name="consumer-secret-key" required>
-      </label>
-      <label>Access Token:
-        <input id="ucf-access-token-input" name="access-token" required>
-      </label>
-      <label>Access Token Secret:
-        <input id="ucf-access-token-secret-input" name="access-token-secret" required>
-      </label>
+    <div class="setting-wrapper" style="display: none;">
+      <span class="page-header">Settings</span>
       <br>
-      <button>Submit</button>
-    </form>
-    <br>
-    <br>
-    <form id="twitter-user-form">
-      <label>@
-        <input name="user-at" maxlength="15" required>
-      </label>
-      <label>Get tweet count: 
-        <input name="tweet-count" type="number" min="5" required value="5">
-      </label>
-      <br>
-      <button>Get Timeline</button>
-    </form>
+      <div class="user-credential-section">
+        <span class="section-header">Twitter Credentials</span>
+        <form id="user-credential-form">
+          <label>Consumer Key: 
+            <input id="ucf-consumer-key-input" name="consumer-key" required>
+          </label>
+          <label>Consumer Secret Key:
+            <input id="ucf-consumer-secret-key-input" name="consumer-secret-key" required>
+          </label>
+          <label>Access Token:
+            <input id="ucf-access-token-input" name="access-token" required>
+          </label>
+          <label>Access Token Secret:
+            <input id="ucf-access-token-secret-input" name="access-token-secret" required>
+          </label>
+          <br>
+          <button>Save Credentials</button>
+        </form>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="control-section">
+        <div class="twitter-user-form-section">
+          <span class="small-section-header">Controls</span>
+          <form id="twitter-user-form">
+            <label>Get @
+              <input name="user-at" maxlength="15" required>
+            </label>
+            <label>Get tweet count: 
+              <input name="tweet-count" type="number" min="5" required value="5">
+            </label>
+            <br>
+            <button>Get Timeline</button>
+          </form>
+        </div>
+        
+      </div>
+      <div id="gallery-section" class="gallery-section">
+        <div class="user-block">
+          <div class="user-info-block">
+            <div class="user-profile-img">
+              <img  src="https://pbs.twimg.com/profile_images/1232862373209231361/XqqCEzXQ_normal.jpg">
+            </div>
+            <div class="user-info-details">
+              <span class="user-info-username">Username</span>
+              <a class="user-info-at">@user</a>
+            </div>
+          </div>
+          <div class="user-img-grid">
+            <div class="user-img-crop">
+              <img src="https://pbs.twimg.com/media/Ez5WwQTUUAQxxRS.jpg">
+            </div>
+            <div class="user-img-crop">
+              <img src="https://pbs.twimg.com/media/Eo8_JXfVQAADYpc.png">
+            </div>
+            <div class="user-img-crop">
+              <img src="https://pbs.twimg.com/media/EnV2cavXEAACNtv.png">
+            </div>
+            <div class="user-img-crop">
+              <img src="https://pbs.twimg.com/media/EnV2dodXcAArBXM.png">
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
