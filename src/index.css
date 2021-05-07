@@ -99,11 +99,18 @@ button{
   height: fit-content;
 }
 
+.gallery-section{
+  display: flex;
+  flex-direction: row;
+}
+
+
 .user-block{
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: 300px;
+  width: fit-content;
+  margin-right: 1px;
 }
 
 .user-info-block{

@@ -10,6 +10,7 @@ export function GetUserDataByUsername(T, username) {
                 if (err) {
                     //console.log("error when GetUserDataByUsername");
                     // show error message popup here
+                    console.log(data);
                     DisplayErrorMessage("username is invalid");
                     resolve(null);
                 }
@@ -32,6 +33,7 @@ export function GetTweetTimeline(T, userid, maxResult) {
                 if (err) {
                     //console.log("error when GetTweetTimeline");
                     // show error message popup here
+                    console.log(data);
                     DisplayErrorMessage("something has gone wrong in retrieving timeline");
                     resolve(null);
                 }

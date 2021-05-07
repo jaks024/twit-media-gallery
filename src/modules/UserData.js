@@ -4,21 +4,25 @@ export function UserData(hasCredentials){
 
 // extremely inefficient
 export function AddTwitterUserToUserData(userData, twitterUser){
-    let addedIntoExisting = false;
-    userData.twitterUserList.forEach(existingUsers => {
-        if (existingUsers.id.localeCompare(twitterUser.id) == 0) {
-            twitterUser.timelineMedia.forEach(media => {
-                if (!TimelineMediaIncludes(existingUsers.timelineMedia, media)) {
-                    existingUsers.timelineMedia.push(media);
-                }
-            });
-            addedIntoExisting = true;
-            return;
+    return new Promise(resolve => {
+        let addedIntoExisting = false;
+        userData.twitterUserList.forEach(existingUsers => {
+            if (existingUsers.id.localeCompare(twitterUser.id) == 0) {
+                twitterUser.timelineMedia.forEach(media => {
+                    if (!media.type.localeCompare('photo') || media.url != undefined)
+                    if (!TimelineMediaIncludes(existingUsers.timelineMedia, media)) {
+                        existingUsers.timelineMedia.push(media);
+                    }
+                });
+                addedIntoExisting = true;
+                resolve(0);
+            }
+        });
+        if (!addedIntoExisting) {
+            userData.twitterUserList.push(twitterUser);
         }
+        resolve(1);
     });
-    if (!addedIntoExisting) {
-        userData.twitterUserList.push(twitterUser);
-    }
 }
 
 function TimelineMediaIncludes(timelineMedia, media){

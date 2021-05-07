@@ -35,7 +35,7 @@ async function OnFormDataReceived(userat, tweetCount) {
     }
     let user = datas[0];
     let tl = datas[1];
-
+    console.log(datas);
     var newTwitterUser = new TwitterUser(user.name, user.username, user.id, 
         user.profile_image_url, user.url, tl.includes.media);
     

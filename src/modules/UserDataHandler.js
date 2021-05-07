@@ -3,6 +3,7 @@ import {
     SerializeUserData
 } from './UserFileSerializer.js';
 import { UserData, AddTwitterUserToUserData } from './UserData.js';
+import { InsertNewUserBlock } from './GalleryLoader.js';
 
 
 
@@ -12,11 +13,25 @@ export function Initialize(){
     if (userData == null) {
         userData = new UserData(false);
         SerializeUserData(userData);
-    } 
+    } else {
+        LoadAllTwitterUserBlocks(userData.twitterUserList);
+    }
 }
 
-export function AddNewTwitterUserToUser(tu){
-    AddTwitterUserToUserData(userData, tu);
-    SerializeUserData(userData);
+export async function AddNewTwitterUserToUser(tu){
+    let result = await AddTwitterUserToUserData(userData, tu);
+    if (result == 1) {
+        SerializeUserData(userData);
+        InsertNewUserBlock(tu);
+    } else {
+        // insert new img into existing blocks
+    }
+    
     //console.log(userData);
+}
+
+function LoadAllTwitterUserBlocks(tuList){
+    tuList.forEach(twitterUser => {
+        InsertNewUserBlock(twitterUser);
+    });
 }
