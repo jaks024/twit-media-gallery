@@ -1,7 +1,8 @@
 :root{
-  --main-bg-color: black;
+  --main-bg-color: rgb(44, 44, 44);
   --text-color: white;
-  --img-grid-square-size: 150px;
+  --img-grid-square-size: 300px;
+  --control-section-height: 135px;
   --hyperlink-color: dodgerblue;
 }
 
@@ -83,20 +84,30 @@ button{
 .wrapper{
   position: relative;
   width: 100%;
-  height: fit-content;
+  height: 100%;
   padding: 10px;
   box-sizing: border-box;
 }
 
 .control-section{
+  position: absolute;
   display: flex;
   flex-direction: row;
-  height: fit-content;
+  height: var(--control-section-height);
+  width: 400px;
 }
 
 .twitter-user-form-section{
-  width: 50%;
-  height: fit-content;
+  width: 100%;
+  height: inherit;
+}
+
+.gallery-scroll-wrapper{
+  position: relative; 
+  top: var(--control-section-height); 
+  width: 100%; 
+  height: calc(100% - var(--control-section-height)); 
+  box-sizing: border-box;
 }
 
 .gallery-section{
@@ -139,7 +150,7 @@ button{
 }
 
 .user-info-at{
-  font-size: 20px;
+  font-size: 15px;
   color: var(--hyperlink-color);
 }
 

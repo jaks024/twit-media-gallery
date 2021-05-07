@@ -22,6 +22,7 @@ export function DeserializeUserData() {
 }
 
 async function SerializeToJson(data, fileName){
+    console.log(data);
     let json = JSON.stringify(data);
     
     fs.writeFile(path.join(app.getPath('userData'), fileName), json, function(err) {

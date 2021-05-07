@@ -1,19 +1,22 @@
-export function UserData(hasCredentials){
+export function UserData() {
     this.twitterUserList = [];
 }
 
 // extremely inefficient
-export function AddTwitterUserToUserData(userData, twitterUser){
+export function AddTwitterUserToUserData(userData, twitterUser) {
     return new Promise(resolve => {
         let addedIntoExisting = false;
         userData.twitterUserList.forEach(existingUsers => {
             if (existingUsers.id.localeCompare(twitterUser.id) == 0) {
-                twitterUser.timelineMedia.forEach(media => {
-                    if (!media.type.localeCompare('photo') || media.url != undefined)
+                for (let i = 0; i < twitterUser.timelineMedia.length; ++i) {
+                    const media = twitterUser.timelineMedia[i];
+                    if (media.type.localeCompare('photo') != 0 || media.url == undefined) {
+                        continue;
+                    }
                     if (!TimelineMediaIncludes(existingUsers.timelineMedia, media)) {
                         existingUsers.timelineMedia.push(media);
                     }
-                });
+                }
                 addedIntoExisting = true;
                 resolve(0);
             }
@@ -25,13 +28,12 @@ export function AddTwitterUserToUserData(userData, twitterUser){
     });
 }
 
-function TimelineMediaIncludes(timelineMedia, media){
-    let contains = false;
-    timelineMedia.forEach(element => {
-        if (element.media_key.localeCompare(media.media_key)){
-            contains = true;
-            return;
+function TimelineMediaIncludes(timelineMedia, media) {
+    for (let i = 0; i < timelineMedia.length; ++i) {
+        const element = timelineMedia[i];
+        if (element.media_key.localeCompare(media.media_key) == 0) {
+            return true;
         }
-    });
-    return contains;
+    }
+    return false;
 }

@@ -20,8 +20,8 @@ export function Initialize(){
 
 export async function AddNewTwitterUserToUser(tu){
     let result = await AddTwitterUserToUserData(userData, tu);
+    SerializeUserData(userData);
     if (result == 1) {
-        SerializeUserData(userData);
         InsertNewUserBlock(tu);
     } else {
         // insert new img into existing blocks

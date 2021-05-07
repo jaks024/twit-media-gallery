@@ -1,6 +1,5 @@
 import { Initialize } from './modules/UserDataHandler.js';
 
-
 Initialize();
 
 
