@@ -2,8 +2,8 @@ import {
     DeserializeUserData,
     SerializeUserData
 } from './UserFileSerializer.js';
-import { UserData, AddTwitterUserToUserData } from './UserData.js';
-import { InsertNewUserBlock } from './GalleryLoader.js';
+import { UserData, AddTwitterUserToUserData, NOT_IN_LIST } from './UserData.js';
+import { InsertNewImgIntoExistingBlock, InsertNewUserBlock } from './GalleryLoader.js';
 
 
 
@@ -21,9 +21,10 @@ export function Initialize(){
 export async function AddNewTwitterUserToUser(tu){
     let result = await AddTwitterUserToUserData(userData, tu);
     SerializeUserData(userData);
-    if (result == 1) {
+    if (result == NOT_IN_LIST) {
         InsertNewUserBlock(tu);
     } else {
+        InsertNewImgIntoExistingBlock(tu.id, result)
         // insert new img into existing blocks
     }
     

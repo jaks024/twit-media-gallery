@@ -30,24 +30,36 @@ export function InsertNewUserBlock(twitterUser){
     userInfoBlock.appendChild(userInfoDetails);
 
     userBlock.appendChild(userInfoBlock);
-    userBlock.appendChild(CreateNewUserImgGrid(twitterUser.timelineMedia));
+    userBlock.appendChild(CreateNewUserImgGrid(twitterUser.timelineMedia, twitterUser.id));
 
     userBlockParentElement.appendChild(userBlock);
     console.log(`appended html user block of: ${twitterUser.name}`)
 }
 
-function CreateNewUserImgGrid(timelineMedia){
+function CreateNewUserImgGrid(timelineMedia, id){
     let userImgGrid = document.createElement('div');
     userImgGrid.classList.add('user-img-grid');
-    timelineMedia.forEach(element => {
-        let userImgCrop = document.createElement('div');
-        userImgCrop.classList.add('user-img-crop');
-
-        let img = document.createElement('img');
-        img.src = element.url;
-
-        userImgCrop.appendChild(img);
-        userImgGrid.appendChild(userImgCrop);
+    userImgGrid.id = id;
+    timelineMedia.forEach(media => {
+        userImgGrid.appendChild(CreateImgItem(media));
     });
     return userImgGrid;
+}
+
+function CreateImgItem(media){
+    let userImgCrop = document.createElement('div');
+    userImgCrop.classList.add('user-img-crop');
+
+    let img = document.createElement('img');
+    img.src = media.url;
+
+    userImgCrop.appendChild(img);
+    return userImgCrop;
+}
+
+export function InsertNewImgIntoExistingBlock(userId, newMedias){
+    let userImgGrid = document.getElementById(userId);
+    newMedias.forEach(media => {
+        userImgGrid.appendChild(CreateImgItem(media));
+    });
 }

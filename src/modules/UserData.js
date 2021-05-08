@@ -2,29 +2,30 @@ export function UserData() {
     this.twitterUserList = [];
 }
 
+export const NOT_IN_LIST = 0;
+
 // extremely inefficient
 export function AddTwitterUserToUserData(userData, twitterUser) {
     return new Promise(resolve => {
-        let addedIntoExisting = false;
-        userData.twitterUserList.forEach(existingUsers => {
-            if (existingUsers.id.localeCompare(twitterUser.id) == 0) {
+        for (let k = 0; k < userData.twitterUserList.length; ++k) {
+            const existingUser = userData.twitterUserList[k]; 
+            if (existingUser.id.localeCompare(twitterUser.id) == 0) {
+                let mediaDifference = [];
                 for (let i = 0; i < twitterUser.timelineMedia.length; ++i) {
                     const media = twitterUser.timelineMedia[i];
                     if (media.type.localeCompare('photo') != 0 || media.url == undefined) {
                         continue;
                     }
-                    if (!TimelineMediaIncludes(existingUsers.timelineMedia, media)) {
-                        existingUsers.timelineMedia.push(media);
+                    if (!TimelineMediaIncludes(existingUser.timelineMedia, media)) {
+                        existingUser.timelineMedia.push(media);
+                        mediaDifference.push(media);
                     }
                 }
-                addedIntoExisting = true;
-                resolve(0);
+                return resolve(mediaDifference);
             }
-        });
-        if (!addedIntoExisting) {
-            userData.twitterUserList.push(twitterUser);
         }
-        resolve(1);
+        userData.twitterUserList.push(twitterUser);
+        resolve(NOT_IN_LIST);
     });
 }
 

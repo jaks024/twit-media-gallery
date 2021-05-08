@@ -1,7 +1,7 @@
 :root{
   --main-bg-color: rgb(44, 44, 44);
   --text-color: white;
-  --img-grid-square-size: 300px;
+  --img-grid-square-size: 200px;
   --control-section-height: 135px;
   --hyperlink-color: dodgerblue;
 }
