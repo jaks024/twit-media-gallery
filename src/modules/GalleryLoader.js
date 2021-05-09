@@ -1,4 +1,6 @@
 const userBlockParentElement = document.getElementById('gallery-section');
+const delayTimer = ms => new Promise(res => setTimeout(res, ms));
+const IMG_LOAD_DELAY = 150;
 
 export function InsertNewUserBlock(twitterUser){
     let userBlock = document.createElement('div');
@@ -40,9 +42,9 @@ function CreateNewUserImgGrid(timelineMedia, id){
     let userImgGrid = document.createElement('div');
     userImgGrid.classList.add('user-img-grid');
     userImgGrid.id = id;
-    timelineMedia.forEach(media => {
-        userImgGrid.appendChild(CreateImgItem(media));
-    });
+    for (let i = 0; i < timelineMedia.length; ++i) {
+        userImgGrid.appendChild(CreateImgItem(timelineMedia[i]));
+    }
     return userImgGrid;
 }
 
@@ -57,9 +59,12 @@ function CreateImgItem(media){
     return userImgCrop;
 }
 
-export function InsertNewImgIntoExistingBlock(userId, newMedias){
+
+
+export async function InsertNewImgIntoExistingBlock(userId, newMedias){
     let userImgGrid = document.getElementById(userId);
-    newMedias.forEach(media => {
-        userImgGrid.appendChild(CreateImgItem(media));
-    });
+    for (let i = 0; i < newMedias.length; ++i) {
+        userImgGrid.appendChild(CreateImgItem(newMedias[i]));
+        await delayTimer(IMG_LOAD_DELAY);
+    }
 }

@@ -2,7 +2,7 @@ export function UserData() {
     this.twitterUserList = [];
 }
 
-export const NOT_IN_LIST = 0;
+export const NOT_IN_LIST = null;
 
 // extremely inefficient
 export function AddTwitterUserToUserData(userData, twitterUser) {
@@ -13,7 +13,7 @@ export function AddTwitterUserToUserData(userData, twitterUser) {
                 let mediaDifference = [];
                 for (let i = 0; i < twitterUser.timelineMedia.length; ++i) {
                     const media = twitterUser.timelineMedia[i];
-                    if (media.type.localeCompare('photo') != 0 || media.url == undefined) {
+                    if (media.type.localeCompare('photo') !== 0 || media.url === undefined) {
                         continue;
                     }
                     if (!TimelineMediaIncludes(existingUser.timelineMedia, media)) {
@@ -21,9 +21,11 @@ export function AddTwitterUserToUserData(userData, twitterUser) {
                         mediaDifference.push(media);
                     }
                 }
+                console.log("returned");
                 return resolve(mediaDifference);
             }
         }
+        console.log("still added");
         userData.twitterUserList.push(twitterUser);
         resolve(NOT_IN_LIST);
     });

@@ -1,10 +1,15 @@
-export function TwitterUser(name, username, id, profileImgUrl, profileUrl, timelineMedia) {
+export function TwitterUser(name, username, id, profileImgUrl, profileUrl, 
+    timelineMedia, tweetCount, newestTweetId, oldestTweetId, createdDate) {
     this.name = name;
     this.username = username;
     this.id = id;
     this.profileImgUrl = profileImgUrl;
     this.profileUrl = profileUrl;
     this.timelineMedia = timelineMedia; //an array
+    this.tweetCount = tweetCount;
+    this.newestTweetId = newestTweetId;
+    this.oldestTweetId = oldestTweetId; 
+    this.createdDate = createdDate;
 }
 
 /*

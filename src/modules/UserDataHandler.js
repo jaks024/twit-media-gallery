@@ -25,7 +25,6 @@ export async function AddNewTwitterUserToUser(tu){
         InsertNewUserBlock(tu);
     } else {
         InsertNewImgIntoExistingBlock(tu.id, result)
-        // insert new img into existing blocks
     }
     
     //console.log(userData);
