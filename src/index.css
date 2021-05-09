@@ -146,12 +146,19 @@ button{
 
 .user-info-username{
   font-size: 20px;
+  line-height: 20px;
   font-weight: bold;
 }
 
 .user-info-at{
-  font-size: 15px;
+  font-size: 12px;
+  line-height: 15px;
   color: var(--hyperlink-color);
+}
+
+.user-info-count{
+  font-size: 12px;
+  line-height: 15px;
 }
 
 .user-img-grid{

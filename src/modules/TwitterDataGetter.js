@@ -4,7 +4,7 @@ import { DisplayErrorMessage } from './ErrorMsgPopupManager.js';
 export function GetUserDataByUsername(T, username) {
     return new Promise(resolve => {
         T.get(`https://api.twitter.com/2/users/by/username/${username}` +
-            `?user.fields=profile_image_url,url,public_metrics,created_at`,
+            `?user.fields=profile_image_url,public_metrics,created_at`,
             function (err, data, response) {
                 console.log(data);
                 if (err) {

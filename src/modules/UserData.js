@@ -21,11 +21,9 @@ export function AddTwitterUserToUserData(userData, twitterUser) {
                         mediaDifference.push(media);
                     }
                 }
-                console.log("returned");
                 return resolve(mediaDifference);
             }
         }
-        console.log("still added");
         userData.twitterUserList.push(twitterUser);
         resolve(NOT_IN_LIST);
     });
