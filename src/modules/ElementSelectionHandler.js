@@ -24,7 +24,7 @@ export function AddToSelectedImages(mediaKey, twitterUserId, timelineMedia, html
     let element = selectedImage.htmlElement;
     if (element.classList.contains(SELECTED_CLASS)) {
         element.classList.remove(SELECTED_CLASS);
-        RemoveFromSelectedImages(media.media_key)
+        RemoveFromSelectedImages(timelineMedia.media_key)
     } else {
         element.classList.add(SELECTED_CLASS);
         selectedImageMap.set(mediaKey, selectedImage);
