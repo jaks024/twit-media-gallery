@@ -1,14 +1,24 @@
+import {
+    AddToSelectedImages,
+    isInSelectionMode
+} from "./ElementSelectionHandler.js";
+
 const userBlockParentElement = document.getElementById('gallery-section');
 const delayTimer = ms => new Promise(res => setTimeout(res, ms));
 const IMG_LOAD_DELAY = 150;
 
-export async function InsertNewUserBlock(twitterUser){
+
+function ImageElementOnClick(id, media, element) {
+    AddToSelectedImages(media.media_key, id, media, element);
+}
+
+export async function InsertNewUserBlock(twitterUser) {
     let userBlock = document.createElement('div');
     userBlock.classList.add('user-block');
 
     let userInfoBlock = document.createElement('div');
     userInfoBlock.classList.add('user-info-block');
-    
+
     let userProfileImg = document.createElement('div');
     userProfileImg.classList.add('user-profile-img');
     let profileImg = document.createElement('img');
@@ -35,13 +45,10 @@ export async function InsertNewUserBlock(twitterUser){
     let userImgCount = document.createElement('div');
     userImgCount.classList.add('user-info-count');
     userImgCount.textContent = `${twitterUser.timelineMedia.length} Images`;
+
     userInfoDetails.appendChild(userImgCount);
-
     userInfoBlock.appendChild(userInfoDetails);
-
-
     userBlock.appendChild(userInfoBlock);
-
     userBlockParentElement.appendChild(userBlock);
 
     let userImgGrid = document.createElement('div');
@@ -49,44 +56,44 @@ export async function InsertNewUserBlock(twitterUser){
     userImgGrid.id = twitterUser.id;
     userBlock.appendChild(userImgGrid);
     for (let i = 0; i < twitterUser.timelineMedia.length; ++i) {
-        userImgGrid.appendChild(CreateImgItem(twitterUser.timelineMedia[i]));
+        userImgGrid.appendChild(CreateImgItem(twitterUser.id, twitterUser.timelineMedia[i]));
         await delayTimer(IMG_LOAD_DELAY);
     }
 
-    //userBlock.appendChild(await CreateNewUserImgGrid(twitterUser.timelineMedia, twitterUser.id));
-
-    
     console.log(`appended html user block of: ${twitterUser.name}`)
 }
 
-async function CreateNewUserImgGrid(timelineMedia, id){
-    let userImgGrid = document.createElement('div');
-    userImgGrid.classList.add('user-img-grid');
-    userImgGrid.id = id;
-    for (let i = 0; i < timelineMedia.length; ++i) {
-        userImgGrid.appendChild(CreateImgItem(timelineMedia[i]));
-        await delayTimer(IMG_LOAD_DELAY);
-    }
-    return userImgGrid;
-}
 
-function CreateImgItem(media){
+function CreateImgItem(id, media) {
     let userImgCrop = document.createElement('div');
     userImgCrop.classList.add('user-img-crop');
+    userImgCrop.id = media.media_key;
 
     let img = document.createElement('img');
     img.src = media.url;
 
     userImgCrop.appendChild(img);
+    userImgCrop.addEventListener('click', function (e) {
+        e.preventDefault();
+        console.log(`clicked on ${id}`);
+        console.log(media);
+        if (isInSelectionMode) {
+            ImageElementOnClick(id, media, userImgCrop);
+        } else {
+            // big image view
+        }
+    })
+
     return userImgCrop;
 }
 
 
 
-export async function InsertNewImgIntoExistingBlock(userId, newMedias){
+export async function InsertNewImgIntoExistingBlock(userId, newMedias) {
     let userImgGrid = document.getElementById(userId);
+    //console.log(newMedias);
     for (let i = 0; i < newMedias.length; ++i) {
-        userImgGrid.appendChild(CreateImgItem(newMedias[i]));
+        userImgGrid.appendChild(CreateImgItem(userId, newMedias[i]));
         await delayTimer(IMG_LOAD_DELAY);
     }
 }

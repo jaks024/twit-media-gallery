@@ -79,6 +79,7 @@ button{
   border: 1px solid var(--text-color);
   color: inherit;
   height: 30px;
+  width: 100%;
 }
 
 .wrapper{
@@ -87,6 +88,8 @@ button{
   height: 100%;
   padding: 10px;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 
 .control-section{
@@ -94,12 +97,34 @@ button{
   display: flex;
   flex-direction: row;
   height: var(--control-section-height);
-  width: 400px;
+  width: 600px;
+}
+
+.parallel-btn-container{
+  display: flex;
+  width: 100%;
 }
 
 .twitter-user-form-section{
   width: 100%;
   height: inherit;
+}
+
+.image-selection-section{
+  width: 300px;
+  padding-left: 10px;
+}
+
+.selection-toggle{
+  width: 15px;
+  height: 15px;
+  padding: 0px;
+  margin: 0px;
+}
+
+.regular-text{
+  line-height: 18px;
+  font-size: 16px;
 }
 
 .gallery-scroll-wrapper{
@@ -153,6 +178,7 @@ button{
 .user-info-at{
   font-size: 12px;
   line-height: 15px;
+  width: fit-content;
   color: var(--hyperlink-color);
 }
 
@@ -176,10 +202,15 @@ button{
   height: var(--img-grid-square-size);
   width: var(--img-grid-square-size);
   overflow: hidden;
+  transition: opacity 0.5s ease;
 }
 
 img{
   width: 100%;
   height: 100%;
   object-fit:cover;
+}
+
+.selected{
+  opacity: 0.5;
 }
