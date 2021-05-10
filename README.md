@@ -7,7 +7,9 @@ currently a WIP
 ### Setup
 1. Enter the keys that you get from Twitter Developer Portal -> Projects 
 2. Enter the @ of the user that you want. Get tweet count range is between 5-100 due to Twitter API limitation. 
+
 For example, if "Get tweet count" is 100 and "Get Count Timeline" is pressed, then the program will fetch the most recent 100 tweets from the @user and display the attachments of those tweets (if there is any). If "Get All Timeline" is pressed, the program will attempt to fetch up to 3200 tweets (limited by Twitter API) and display all the attachments to those tweets (if there is any). 
+
 Note: "Get All Timeline" may take some time because of call delays (Indicator to be added). 
 
 ### Delete Images
