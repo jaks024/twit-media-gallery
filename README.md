@@ -1,7 +1,5 @@
 # twit-media-gallery
-Desktop app that fetch and display multiple Twitter user's media tweet images
-
- in a photo gallery style
+Desktop app that fetch and display multiple Twitter user's media tweet images in a photo gallery style
 
 currently a WIP
 
