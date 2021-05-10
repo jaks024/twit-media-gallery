@@ -2,8 +2,9 @@ import {
     DeserializeUserData,
     SerializeUserData
 } from './UserFileSerializer.js';
-import { UserData, AddTwitterUserToUserData, NOT_IN_LIST } from './UserData.js';
+import { UserData, AddTwitterUserToUserData, NOT_IN_LIST, RemoveImageFromTwitterUser } from './UserData.js';
 import { InsertNewImgIntoExistingBlock, InsertNewUserBlock } from './GalleryLoader.js';
+import { UpdateImageCount } from './GalleryEventHandler.js';
 
 
 
@@ -24,10 +25,20 @@ export async function AddNewTwitterUserToUser(tu){
     if (result == NOT_IN_LIST) {
         InsertNewUserBlock(tu);
     } else {
-        InsertNewImgIntoExistingBlock(tu.id, result)
+        InsertNewImgIntoExistingBlock(tu.id, result);
+        UpdateImageCount(userData.twitterUserMap);
     }
     
     console.log(userData);
+}
+
+export function RemoveImageFromSelectedTwitterUser(twitterUserId, mediaKey) {
+    RemoveImageFromTwitterUser(userData, twitterUserId, mediaKey);
+    UpdateImageCount(userData.twitterUserMap);
+}
+
+export function SaveData(){
+    SerializeUserData(userData);
 }
 
 function LoadAllTwitterUserBlocks(tuMap){

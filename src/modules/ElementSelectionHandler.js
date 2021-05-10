@@ -1,3 +1,5 @@
+import { RemoveImageFromSelectedTwitterUser, SaveData } from "./UserDataHandler.js";
+
 const selectionModeToggleElement = document.getElementById('selection-toggle');
 const selectedCountText = document.getElementById('selected-count-text');
 const clearSelectionBtn = document.getElementById('clear-selection-btn');
@@ -59,9 +61,11 @@ function ClearSelectedImages(){
 }
 
 function DeleteSelectedImages(){
-    for (let [key, value] of selectedImageMap.entries()) {
-        value.htmlElement.remove();
+    for (let [mediaKey, selectedImage] of selectedImageMap.entries()) {
+        selectedImage.htmlElement.remove();
+        RemoveImageFromSelectedTwitterUser(selectedImage.twitterUserId, mediaKey);
     }
     selectedImageMap.clear();
+    SaveData();
     UpdateSelectedCount();
 }

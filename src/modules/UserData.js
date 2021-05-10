@@ -26,3 +26,9 @@ export function AddTwitterUserToUserData(userData, twitterUser) {
         resolve(NOT_IN_LIST);
     });
 }
+
+
+export function RemoveImageFromTwitterUser(userData, twitterUserId, mediaKey){
+    userData.twitterUserMap.get(twitterUserId).timelineMedia.delete(mediaKey);
+    console.log(`deleted: ${mediaKey} from twitter user: ${twitterUserId}`);
+}

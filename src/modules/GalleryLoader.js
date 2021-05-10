@@ -2,6 +2,7 @@ import {
     AddToSelectedImages,
     isInSelectionMode
 } from "./ElementSelectionHandler.js";
+import { AddNewImageCount } from "./GalleryEventHandler.js";
 
 const userBlockParentElement = document.getElementById('gallery-section');
 const delayTimer = ms => new Promise(res => setTimeout(res, ms));
@@ -45,6 +46,7 @@ export async function InsertNewUserBlock(twitterUser) {
     let userImgCount = document.createElement('div');
     userImgCount.classList.add('user-info-count');
     userImgCount.textContent = `${twitterUser.timelineMedia.size} Images`;
+    AddNewImageCount(twitterUser.id, userImgCount);
 
     userInfoDetails.appendChild(userImgCount);
     userInfoBlock.appendChild(userInfoDetails);
