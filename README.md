@@ -31,5 +31,7 @@ Convert project to use React (Possibly)
 
 # Libraries Used
 [SimpleBar](https://github.com/Grsmto/simplebar) (for nice looking scrollbar)
+
 [Twit](https://github.com/ttezel/twit) (for signing into Twitter API and make calls with endpoints)
+
 [Electron](https://www.electronjs.org/)
