@@ -17,7 +17,8 @@ For example, if "Get tweet count" is 100 and "Get Count Timeline" is pressed, th
 2. Click on the images to select them and press delete selected when done. 
 
 Demo
-![demo](https://user-images.githubusercontent.com/42505518/117599543-feac4900-b117-11eb-8a5c-8c6f7abb9cc8.gif)
+
+![](https://user-images.githubusercontent.com/42505518/117599543-feac4900-b117-11eb-8a5c-8c6f7abb9cc8.gif)
 
 (*) keys and data are stored in the twit-media-gallery folder in the AppData folder
 
