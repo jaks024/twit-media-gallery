@@ -10,17 +10,16 @@ currently a WIP
 1. Enter the keys that you get from Twitter Developer Portal -> Projects 
 2. Enter the @ of the user that you want. Get tweet count range is between 5-100 due to Twitter API limitation. 
 For example, if "Get tweet count" is 100 and "Get Count Timeline" is pressed, then the program will fetch the most recent 100 tweets from the @user and display the attachments of those tweets (if there is any). If "Get All Timeline" is pressed, the program will attempt to fetch up to 3200 tweets (limited by Twitter API) and display all the attachments to those tweets (if there is any). 
-(*) "Get All Timeline" may take some time because of call delays (Indicator to be added). 
+Note: "Get All Timeline" may take some time because of call delays (Indicator to be added). 
 
 ### Delete Images
 1. Tick the selection mode checkbox
 2. Click on the images to select them and press delete selected when done. 
 
 Demo
-
 ![](https://user-images.githubusercontent.com/42505518/117599543-feac4900-b117-11eb-8a5c-8c6f7abb9cc8.gif)
 
-(*) keys and data are stored in the twit-media-gallery folder in the AppData folder
+Note: keys and data are stored in the twit-media-gallery folder in the AppData folder
 
 # Planned Features/Changes
 Error & Progress Notifications
