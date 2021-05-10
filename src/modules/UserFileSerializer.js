@@ -1,3 +1,5 @@
+import { UserData } from './UserData.js';
+
 const app = require('electron').remote.app;
 const path = require('path');
 const fs = require('fs');
@@ -10,7 +12,7 @@ export function SerializeUserCredential(userCredential){
 }
 
 export function SerializeUserData(userData) {
-    SerializeToJson(userData, USER_DATA_FILE_NAME);
+    SerializeUserDataToJson(userData, USER_DATA_FILE_NAME);
 }
 
 export function DeserializeUserCredential() {
@@ -18,7 +20,38 @@ export function DeserializeUserCredential() {
 }
 
 export function DeserializeUserData() {
-    return DeserializeFromJson(USER_DATA_FILE_NAME);
+    return DeserializeUserDataFromJson(USER_DATA_FILE_NAME);
+}
+
+function replacer(key, value) {
+    if(value instanceof Map) {
+      return {
+        dataType: 'Map',
+        value: Array.from(value.entries()), // or with spread: value: [...value]
+      };
+    } else {
+      return value;
+    }
+}
+
+function reviver(key, value) {
+    if(typeof value === 'object' && value !== null) {
+      if (value.dataType === 'Map') {
+        return new Map(value.value);
+      }
+    }
+    return value;
+}
+
+async function SerializeUserDataToJson(data, fileName){
+    let json = JSON.stringify(data, replacer);
+    fs.writeFile(path.join(app.getPath('userData'), fileName), json, function(err) {
+        if (err) {
+            console.error(err);
+            return;
+        }
+        console.log(`SerializeToJson ${fileName} success`);
+    });
 }
 
 async function SerializeToJson(data, fileName){
@@ -27,11 +60,24 @@ async function SerializeToJson(data, fileName){
     
     fs.writeFile(path.join(app.getPath('userData'), fileName), json, function(err) {
         if (err) {
-            throw err;
+            console.error(err);
+            return;
         }
         console.log(`SerializeToJson ${fileName} success`);
     });
-    return;
+}
+
+function DeserializeUserDataFromJson(fileName){
+    let savePath = path.join(app.getPath('userData'), fileName);
+    console.log(savePath);
+    try {
+        if (fs.existsSync(savePath)){  
+            return JSON.parse(fs.readFileSync(savePath), reviver);
+        }
+    } catch (err) {
+        console.error(err);
+    }
+    return null;
 }
 
 function DeserializeFromJson(fileName) {

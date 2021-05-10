@@ -13,18 +13,18 @@ selectionModeToggleElement.addEventListener('click', ToggleSelectionMode);
 var selectedImageMap = new Map(); 
 export var isInSelectionMode = false;
 
-export function SelectedImage(twitterUserId, timelineMedia, htmlElement){
+export function SelectedImage(twitterUserId, media, htmlElement){
     this.twitterUserId = twitterUserId;
-    this.timelineMedia = timelineMedia;
+    this.media = media;
     this.htmlElement = htmlElement;
 }
 
-export function AddToSelectedImages(mediaKey, twitterUserId, timelineMedia, htmlElement){
-    let selectedImage = new SelectedImage(twitterUserId, timelineMedia, htmlElement);
+export function AddToSelectedImages(mediaKey, twitterUserId, media, htmlElement){
+    let selectedImage = new SelectedImage(twitterUserId, media, htmlElement);
     let element = selectedImage.htmlElement;
     if (element.classList.contains(SELECTED_CLASS)) {
         element.classList.remove(SELECTED_CLASS);
-        RemoveFromSelectedImages(timelineMedia.media_key)
+        RemoveFromSelectedImages(media.media_key)
     } else {
         element.classList.add(SELECTED_CLASS);
         selectedImageMap.set(mediaKey, selectedImage);

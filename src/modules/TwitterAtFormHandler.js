@@ -35,6 +35,14 @@ twitterUserFormElement.addEventListener('formdata', (e) => {
     OnFormDataReceived(userat, tweetCount, submitBtnValue.localeCompare(YES_PAGINATION) == 0);
 });
 
+function MediaListToMap(mediaList){
+    let mediaMap = new Map();
+    for (let i = 0; i < mediaList.length; ++i) {
+        mediaMap.set(mediaList[i].media_key, mediaList[i]);
+    }
+    return mediaMap;
+}
+
 async function OnFormDataReceived(userat, tweetCount, pagination) {
     if (userTwit == null) {
         DisplayErrorMessage("One or more of the Twitter Keys are invalid");
@@ -55,7 +63,7 @@ async function OnFormDataReceived(userat, tweetCount, pagination) {
     let tl = datas[1];
     console.log(datas);
     let newTwitterUser = new TwitterUser(user.name, user.username, user.id,
-            user.profile_image_url, tl.media, user.public_metrics.tweet_count,
+            user.profile_image_url, MediaListToMap(tl.media), user.public_metrics.tweet_count,
             tl.newestId, tl.oldestId, user.created_at);
     AddNewTwitterUserToUser(newTwitterUser);
     console.log(newTwitterUser);

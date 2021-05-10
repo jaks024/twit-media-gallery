@@ -14,7 +14,7 @@ export function Initialize(){
         userData = new UserData(false);
         SerializeUserData(userData);
     } else {
-        LoadAllTwitterUserBlocks(userData.twitterUserList);
+        LoadAllTwitterUserBlocks(userData.twitterUserMap);
     }
 }
 
@@ -27,11 +27,11 @@ export async function AddNewTwitterUserToUser(tu){
         InsertNewImgIntoExistingBlock(tu.id, result)
     }
     
-    //console.log(userData);
+    console.log(userData);
 }
 
-function LoadAllTwitterUserBlocks(tuList){
-    tuList.forEach(twitterUser => {
+function LoadAllTwitterUserBlocks(tuMap){
+    for (let twitterUser of tuMap.values()) {
         InsertNewUserBlock(twitterUser);
-    });
+    }
 }

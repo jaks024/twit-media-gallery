@@ -4,7 +4,7 @@ export function TwitterUser(name, username, id, profileImgUrl,
     this.username = username;
     this.id = id;
     this.profileImgUrl = profileImgUrl;
-    this.timelineMedia = timelineMedia; //an array
+    this.timelineMedia = timelineMedia; //an Map
     this.tweetCount = tweetCount;
     this.newestTweetId = newestTweetId;
     this.oldestTweetId = oldestTweetId; 
@@ -14,9 +14,3 @@ export function TwitterUser(name, username, id, profileImgUrl,
 /*
     timelineMedia[i] fields: media_key, type, url
 */
-
-export function TwitterUserAddMedia(tUser, newMedia){
-    newMedia.array.forEach(element => {
-        tUser.timelineMedia.push(element);
-    });
-}

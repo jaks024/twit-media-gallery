@@ -1,40 +1,28 @@
 export function UserData() {
-    this.twitterUserList = [];
+    this.twitterUserMap = new Map();
 }
 
 export const NOT_IN_LIST = null;
 
-// extremely inefficient
+
 export function AddTwitterUserToUserData(userData, twitterUser) {
     return new Promise(resolve => {
-        for (let k = 0; k < userData.twitterUserList.length; ++k) {
-            const existingUser = userData.twitterUserList[k]; 
-            if (existingUser.id.localeCompare(twitterUser.id) == 0) {
-                let mediaDifference = [];
-                for (let i = 0; i < twitterUser.timelineMedia.length; ++i) {
-                    const media = twitterUser.timelineMedia[i];
-                    if (media.type.localeCompare('photo') !== 0 || media.url === undefined) {
-                        continue;
-                    }
-                    if (!TimelineMediaIncludes(existingUser.timelineMedia, media)) {
-                        existingUser.timelineMedia.push(media);
-                        mediaDifference.push(media);
-                    }
+        let tuMap = userData.twitterUserMap;
+        if (tuMap.has(twitterUser.id)) {
+            let userTimelineMedia = tuMap.get(twitterUser.id).timelineMedia;
+            let mediaDifference = [];
+            for (let [mediaKey, media] of twitterUser.timelineMedia.entries()) {
+                if (media.type.localeCompare('photo') !== 0 || media.url === undefined) {
+                    continue;
                 }
-                return resolve(mediaDifference);
+                if (!userTimelineMedia.has(mediaKey)) {
+                    userTimelineMedia.set(mediaKey, media);
+                    mediaDifference.push(media);
+                }
             }
+            return resolve(mediaDifference);
         }
-        userData.twitterUserList.push(twitterUser);
+        tuMap.set(twitterUser.id, twitterUser);
         resolve(NOT_IN_LIST);
     });
-}
-
-function TimelineMediaIncludes(timelineMedia, media) {
-    for (let i = 0; i < timelineMedia.length; ++i) {
-        const element = timelineMedia[i];
-        if (element.media_key.localeCompare(media.media_key) == 0) {
-            return true;
-        }
-    }
-    return false;
 }

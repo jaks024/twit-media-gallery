@@ -5,7 +5,7 @@ import {
 
 const userBlockParentElement = document.getElementById('gallery-section');
 const delayTimer = ms => new Promise(res => setTimeout(res, ms));
-const IMG_LOAD_DELAY = 150;
+const IMG_LOAD_DELAY = 50;
 
 
 function ImageElementOnClick(id, media, element) {
@@ -44,7 +44,7 @@ export async function InsertNewUserBlock(twitterUser) {
 
     let userImgCount = document.createElement('div');
     userImgCount.classList.add('user-info-count');
-    userImgCount.textContent = `${twitterUser.timelineMedia.length} Images`;
+    userImgCount.textContent = `${twitterUser.timelineMedia.size} Images`;
 
     userInfoDetails.appendChild(userImgCount);
     userInfoBlock.appendChild(userInfoDetails);
@@ -55,8 +55,9 @@ export async function InsertNewUserBlock(twitterUser) {
     userImgGrid.classList.add('user-img-grid');
     userImgGrid.id = twitterUser.id;
     userBlock.appendChild(userImgGrid);
-    for (let i = 0; i < twitterUser.timelineMedia.length; ++i) {
-        userImgGrid.appendChild(CreateImgItem(twitterUser.id, twitterUser.timelineMedia[i]));
+
+    for (let media of twitterUser.timelineMedia.values()) {
+        userImgGrid.appendChild(CreateImgItem(twitterUser.id, media));
         await delayTimer(IMG_LOAD_DELAY);
     }
 
