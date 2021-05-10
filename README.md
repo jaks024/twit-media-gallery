@@ -16,8 +16,8 @@ Note: "Get All Timeline" may take some time because of call delays (Indicator to
 1. Tick the selection mode checkbox
 2. Click on the images to select them and press delete selected when done. 
 
-Demo
-![](https://user-images.githubusercontent.com/42505518/117599543-feac4900-b117-11eb-8a5c-8c6f7abb9cc8.gif)
+###Demo
+![demo](https://user-images.githubusercontent.com/42505518/117599543-feac4900-b117-11eb-8a5c-8c6f7abb9cc8.gif)
 
 Note: keys and data are stored in the twit-media-gallery folder in the AppData folder
 
