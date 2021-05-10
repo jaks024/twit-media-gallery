@@ -97,7 +97,7 @@ button{
   display: flex;
   flex-direction: row;
   height: var(--control-section-height);
-  width: 600px;
+  width: 700px;
 }
 
 .parallel-btn-container{
@@ -106,12 +106,12 @@ button{
 }
 
 .twitter-user-form-section{
-  width: 100%;
+  width: 400px;
   height: inherit;
 }
 
 .image-selection-section{
-  width: 300px;
+  width: 200px;
   padding-left: 10px;
 }
 
@@ -125,6 +125,11 @@ button{
 .regular-text{
   line-height: 18px;
   font-size: 16px;
+}
+
+#open-setting-btn{
+  width: 90px;
+  margin-left: 10px;
 }
 
 .gallery-scroll-wrapper{

@@ -11,8 +11,8 @@ const createWindow = () => {
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
-    minWidth: 600,
-    minHeight: 400,
+    minWidth: 800,
+    minHeight: 600,
     webPreferences: {
       nodeIntegration: true,
       enableRemoteModule: true,
@@ -23,7 +23,7 @@ const createWindow = () => {
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
   
-  mainWindow.removeMenu();
+  //mainWindow.removeMenu();
   // Open the DevTools.
   //mainWindow.webContents.openDevTools();
 };

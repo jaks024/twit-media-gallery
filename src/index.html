@@ -10,13 +10,14 @@
   <script defer type="module" src="./modules/UserCredentialFormHandler.js"></script>
   <script defer type="module" src="./modules/TwitterAtFormHandler.js"></script>
   <script defer type="module" src="./modules/ElementSelectionHandler.js"></script>
+  <script defer type="module" src="./modules/SettingMenuHandler.js"></script>
 
   <link rel="stylesheet" href="https://unpkg.com/simplebar@5.3.0/dist/simplebar.css" />
   <script defer src="https://unpkg.com/simplebar@5.3.0/dist/simplebar.min.js"></script>
 </head>
 
 <body>
-  <div class="setting-wrapper" style="display: none;">
+  <div class="setting-wrapper" id="setting-menu" style="display: none;">
     <span class="page-header">Settings</span>
     <br>
     <div class="user-credential-section">
@@ -37,6 +38,7 @@
         <br>
         <button>Save Credentials</button>
       </form>
+      <button id="close-setting-btn">Close Menu</button>
     </div>
   </div>
   <div class="wrapper">
@@ -63,10 +65,8 @@
         <div>
           <label for="selection-toggle">Selection Mode: 
             <input type="checkbox" class="selection-toggle" id="selection-toggle">
-          </label>
-          
+          </label> 
         </div>
-
         <div>
           <span class="regular-text">Selected: </span>
           <span class="regular-text" id="selected-count-text">0</span>
@@ -74,6 +74,7 @@
         <button id="clear-selection-btn">Clear Selection</button>
         <button id="delete-selection-btn">Delete Selected</button>
       </div>
+      <button id="open-setting-btn">Settings</button>
     </div>
     <div class="gallery-scroll-wrapper" data-simplebar>
       <div id="gallery-section" class="gallery-section">
