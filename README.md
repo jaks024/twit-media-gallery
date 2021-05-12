@@ -22,16 +22,14 @@ Note: "Get All Timeline" may take some time because of call delays (Indicator to
 Note: keys and data are stored in the twit-media-gallery folder in the AppData folder
 
 # Planned Features/Changes
-Error & Progress Notifications
-Different Albums and move items between albums
-Different image displaying layouts
-Magnified view of images
-Get Twitter user liked tweets
-Convert project to use React (Possibly)
+* Error & Progress Notifications
+* Different Albums and move items between albums
+* Different image displaying layouts
+* Magnified view of images
+* Get Twitter user liked tweets
+* Convert project to use React (Possibly)
 
 # Libraries Used
-[SimpleBar](https://github.com/Grsmto/simplebar) (for nice looking scrollbar)
-
-[Twit](https://github.com/ttezel/twit) (for signing into Twitter API and make calls with endpoints)
-
-[Electron](https://www.electronjs.org/)
+* [SimpleBar](https://github.com/Grsmto/simplebar) (for nice looking scrollbar)
+* [Twit](https://github.com/ttezel/twit) (for signing into Twitter API and make calls with endpoints)
+* [Electron](https://www.electronjs.org/)
